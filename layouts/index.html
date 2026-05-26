@@ -1,27 +1,26 @@
 {{ define "main" }}
 <section class="posts">
-  <!-- Neo-Brutalist Category Filter Buttons -->
+  <!-- Neo-Brutalist Filter Buttons -->
   <div class="category-filter">
     <button class="filter-btn active" data-category="all">All</button>
-    <button class="filter-btn" data-category="gaming">Gaming</button>
     <button class="filter-btn" data-category="algorithm">Algorithm</button>
     <button class="filter-btn" data-category="database">Database</button>
-    <button class="filter-btn" data-category="realtime">Realtime</button>
-    <button class="filter-btn" data-category="personal">Personal</button>
+    <button class="filter-btn" data-category="gaming">Gaming</button>
   </div>
   
   <ul>
     <!-- Fetch all pages under the "posts" section, sorted by Date descending -->
     {{ $posts := (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
     {{ range $posts }}
-      {{ $categoriesString := "" }}
-      {{ with .Params.categories }}
-        {{ $categoriesString = delimit . " " }}
+      {{ $tagsString := "" }}
+      {{ with .Params.tags }}
+        {{ $tagsString = delimit . " " }}
       {{ end }}
-      <li class="post-item" data-categories="{{ $categoriesString | lower }}">
+      
+      <li class="post-item" data-categories="{{ $tagsString | lower }}">
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
-          {{ .Date.Format "Jan '02" }}
+          {{ .Date.Format "02/01/06" }}
         </time>
       </li>
     {{ end }}
