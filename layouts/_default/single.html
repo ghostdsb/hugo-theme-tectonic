@@ -10,7 +10,7 @@
   
   <!-- Post Footer Meta Info -->
   <span class="meta">
-    <time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ .Date.Format "01/02/06" }}</time>
     {{ with .Params.categories }}
       &middot; Filed under: {{ range $index, $element := . }}{{ if $index }}, {{ end }}<a href="/categories/{{ $element | urlize }}/">{{ $element }}</a>{{ end }}
     {{ end }}

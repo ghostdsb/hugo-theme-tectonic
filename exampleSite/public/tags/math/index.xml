@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/math/</link>
+    <description>Recent content in Math on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 May 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deriving Bresenham&#39;s Line-Drawing Algorithm</title>
+      <link>http://localhost:1313/posts/bresenhams-line-algorithm/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/bresenhams-line-algorithm/</guid>
+      <description>&lt;p&gt;In the early days of computer graphics, plotting a line was one of the most performance-critical operations. Floating-point division and multiplication were extremely expensive.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bresenham&amp;rsquo;s Line Algorithm&lt;/strong&gt; solves this problem by using only addition, subtraction, and bit-shifting (multiplication by 2). This post covers the mathematical derivation and its implementation.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-mathematical-formulation&#34;&gt;The Mathematical Formulation&lt;/h3&gt;&#xA;&lt;p&gt;Consider a line with endpoints $(x_0, y_0)$ and $(x_1, y_1)$. The slope $m$ of the line is defined as:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Showcase on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/showcase/</link>
+    <description>Recent content in Showcase on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2026 12:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/showcase/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Showcase</title>
+      <link>http://localhost:1313/posts/markdown-showcase/</link>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/markdown-showcase/</guid>
+      <description>&lt;p&gt;This post serves as a demonstration of the various Markdown features supported by the &lt;strong&gt;Tectonic&lt;/strong&gt; theme.&lt;/p&gt;&#xA;&lt;h2 id=&#34;text-formatting&#34;&gt;Text Formatting&lt;/h2&gt;&#xA;&lt;p&gt;You can use standard Markdown formatting:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Bold text&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Italic text&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Inline code&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://google.com&#34;&gt;Link to Google&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;headers&#34;&gt;Headers&lt;/h2&gt;&#xA;&lt;h1 id=&#34;header-1&#34;&gt;Header 1&lt;/h1&gt;&#xA;&lt;h2 id=&#34;header-2&#34;&gt;Header 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;header-3&#34;&gt;Header 3&lt;/h3&gt;&#xA;&lt;h4 id=&#34;header-4&#34;&gt;Header 4&lt;/h4&gt;&#xA;&lt;h2 id=&#34;lists&#34;&gt;Lists&lt;/h2&gt;&#xA;&lt;h3 id=&#34;unordered&#34;&gt;Unordered&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Item 1&lt;/li&gt;&#xA;&lt;li&gt;Item 2&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Subitem 2.1&lt;/li&gt;&#xA;&lt;li&gt;Subitem 2.2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;ordered&#34;&gt;Ordered&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;First&lt;/li&gt;&#xA;&lt;li&gt;Second&lt;/li&gt;&#xA;&lt;li&gt;Third&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;blockquotes&#34;&gt;Blockquotes&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;The best way to predict the future is to invent it.&amp;rdquo;&#xA;— Alan Kay&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

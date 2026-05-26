@@ -122,14 +122,28 @@ a:hover {
   background-color: rgba(0, 102, 204, 0.08);
 }
 
-/* Neo-Brutalist pre blocks (always dark for code legibility in both modes) */
+/* Neo-Brutalist pre blocks */
 pre {
   margin: 1.5rem 0;
   padding: 1rem;
-  background-color: #1E1E24 !important;
+  background-color: var(--code-bg);
   border: 2px solid var(--border-color);
   box-shadow: var(--box-shadow);
   overflow-x: auto;
+  color: var(--text-color); /* Fallback color */
+}
+
+/* Ensure syntax highlighting spans don't inherit black/white backgrounds */
+pre span {
+  background-color: transparent !important;
+}
+
+/* KaTeX visibility fixes */
+.katex {
+  color: var(--text-color);
+}
+.katex-display {
+  color: var(--text-color);
 }
 
 /* Posts / Articles text flow */
@@ -181,7 +195,7 @@ code {
 
 pre code {
   background-color: transparent !important;
-  color: #E4E4E7 !important;
+  color: inherit;
   border: none;
   padding: 0;
   font-size: inherit;

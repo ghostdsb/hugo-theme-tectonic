@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2026 12:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guide</title>
+      <link>http://localhost:1313/categories/guide/</link>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/guide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>http://localhost:1313/categories/personal/</link>
+      <pubDate>Mon, 25 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/personal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Realtime</title>
+      <link>http://localhost:1313/categories/realtime/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/realtime/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>http://localhost:1313/categories/database/</link>
+      <pubDate>Sat, 23 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithm</title>
+      <link>http://localhost:1313/categories/algorithm/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gaming</title>
+      <link>http://localhost:1313/categories/gaming/</link>
+      <pubDate>Thu, 21 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/categories/gaming/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

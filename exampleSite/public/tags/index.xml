@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2026 12:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>http://localhost:1313/tags/markdown/</link>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Showcase</title>
+      <link>http://localhost:1313/tags/showcase/</link>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/showcase/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Diy</title>
+      <link>http://localhost:1313/tags/diy/</link>
+      <pubDate>Mon, 25 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/diy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Esp32</title>
+      <link>http://localhost:1313/tags/esp32/</link>
+      <pubDate>Mon, 25 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/esp32/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardware</title>
+      <link>http://localhost:1313/tags/hardware/</link>
+      <pubDate>Mon, 25 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/hardware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Soldering</title>
+      <link>http://localhost:1313/tags/soldering/</link>
+      <pubDate>Mon, 25 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/soldering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Concurrency</title>
+      <link>http://localhost:1313/tags/concurrency/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>http://localhost:1313/tags/networking/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Websockets</title>
+      <link>http://localhost:1313/tags/websockets/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/websockets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>http://localhost:1313/tags/database/</link>
+      <pubDate>Sat, 23 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage</title>
+      <link>http://localhost:1313/tags/storage/</link>
+      <pubDate>Sat, 23 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/storage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Systems</title>
+      <link>http://localhost:1313/tags/systems/</link>
+      <pubDate>Sat, 23 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>http://localhost:1313/tags/c/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graphics</title>
+      <link>http://localhost:1313/tags/graphics/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/graphics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Math</title>
+      <link>http://localhost:1313/tags/math/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/math/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rasterization</title>
+      <link>http://localhost:1313/tags/rasterization/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/rasterization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Retro</title>
+      <link>http://localhost:1313/tags/retro/</link>
+      <pubDate>Thu, 21 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/retro/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

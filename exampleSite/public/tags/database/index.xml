@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Database on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/database/</link>
+    <description>Recent content in Database on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 May 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Log-Structured Merge-Trees (LSM)</title>
+      <link>http://localhost:1313/posts/understanding-lsm-trees/</link>
+      <pubDate>Sat, 23 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/understanding-lsm-trees/</guid>
+      <description>&lt;p&gt;For write-intensive applications, standard B-Trees often suffer from random disk I/O, leading to severe throughput bottlenecks. &lt;strong&gt;Log-Structured Merge-Trees (LSM Trees)&lt;/strong&gt; solve this by turning random writes into sequential writes, utilizing a hierarchical storage model.&lt;/p&gt;&#xA;&lt;p&gt;This post dissects the architecture of an LSM Tree and illustrates the flow of data from memory to disk.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;core-architecture&#34;&gt;Core Architecture&lt;/h3&gt;&#xA;&lt;p&gt;An LSM Tree decomposes storage into distinct components optimized for their host environment (volatile memory vs. non-volatile disk):&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

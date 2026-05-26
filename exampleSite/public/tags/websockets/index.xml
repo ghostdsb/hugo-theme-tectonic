@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Websockets on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/websockets/</link>
+    <description>Recent content in Websockets on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 May 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/websockets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Real-Time Multiplayer WebSocket Server in Go</title>
+      <link>http://localhost:1313/posts/building-retro-websocket-server/</link>
+      <pubDate>Sun, 24 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/building-retro-websocket-server/</guid>
+      <description>&lt;p&gt;Real-time browser-based retro games require synchronous, sub-100ms updates between all active clients. HTTP polling is far too heavy and introduces unacceptable jitter.&lt;/p&gt;&#xA;&lt;p&gt;This post details how to engineer a high-throughput, concurrent WebSocket hub in Go, integrating a channel-based dispatch loop and robust authentication.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-hub-architecture&#34;&gt;The Hub Architecture&lt;/h3&gt;&#xA;&lt;p&gt;Our Go architecture uses a single central &lt;code&gt;Hub&lt;/code&gt; that coordinates connection registration, active client maps, and message broadcasting. By utilizing Go&amp;rsquo;s native channels, we bypass the need for explicit mutex locking on our maps, avoiding potential lock contention under high load.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

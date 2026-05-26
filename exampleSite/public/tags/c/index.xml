@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on My Side Projects &amp; Learnings</title>
+    <link>http://localhost:1313/tags/c/</link>
+    <description>Recent content in C on My Side Projects &amp; Learnings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 May 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deriving Bresenham&#39;s Line-Drawing Algorithm</title>
+      <link>http://localhost:1313/posts/bresenhams-line-algorithm/</link>
+      <pubDate>Fri, 22 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/bresenhams-line-algorithm/</guid>
+      <description>&lt;p&gt;In the early days of computer graphics, plotting a line was one of the most performance-critical operations. Floating-point division and multiplication were extremely expensive.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bresenham&amp;rsquo;s Line Algorithm&lt;/strong&gt; solves this problem by using only addition, subtraction, and bit-shifting (multiplication by 2). This post covers the mathematical derivation and its implementation.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-mathematical-formulation&#34;&gt;The Mathematical Formulation&lt;/h3&gt;&#xA;&lt;p&gt;Consider a line with endpoints $(x_0, y_0)$ and $(x_1, y_1)$. The slope $m$ of the line is defined as:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rendering Retro Sprites on Monochromatic LCDs</title>
+      <link>http://localhost:1313/posts/rendering-retro-sprites/</link>
+      <pubDate>Thu, 21 May 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/rendering-retro-sprites/</guid>
+      <description>&lt;p&gt;When building retro hand-held hardware using microcontrollers (such as the ESP32), we are constrained by SPI bandwidth and limited SRAM. Sending a full framebuffer (e.g., $320 \times 240$ at 16-bit color is $153.6\text{ KB}$) at 60 FPS requires over &lt;strong&gt;73.7 Mbps&lt;/strong&gt; of continuous SPI throughput.&lt;/p&gt;&#xA;&lt;p&gt;This post walks through compiling a lean, high-efficiency sprite drawer in pure C that renders directly to local page buffers, bypassing standard double-buffering.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-dirty-rectangle-strategy&#34;&gt;The Dirty Rectangle Strategy&lt;/h3&gt;&#xA;&lt;p&gt;Instead of drawing the entire screen, we keep track of the bounding boxes of moving elements—our &amp;ldquo;dirty rectangles&amp;rdquo;. We only re-draw and send the pixels within these boundaries to the display controller via SPI.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

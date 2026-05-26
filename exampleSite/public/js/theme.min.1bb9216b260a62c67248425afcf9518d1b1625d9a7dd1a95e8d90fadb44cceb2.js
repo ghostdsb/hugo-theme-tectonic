@@ -1,0 +1,1 @@
+(function(){document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("theme-toggle");e&&e.addEventListener("click",()=>{const t=document.documentElement.getAttribute("data-theme")||"light",e=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)})})})()

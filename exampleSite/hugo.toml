@@ -1,0 +1,45 @@
+baseURL = 'https://dev.dibyanshu.in/'
+languageCode = 'en-us'
+title = 'My Side Projects & Learnings'
+theme = 'tectonic'
+themesDir = '../..'
+
+# SEO and Metadata Defaults
+[params]
+  description = "Exploring and building side projects - technical learnings, and thoughts on software development."
+  author = "Dibyanshu (ghostdsb)"
+  
+  # Social links
+  github = "https://github.com/ghostdsb"
+  email = "hello@dibyanshu.in"
+
+# Taxonomy Configuration for Category Filters
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+# Custom Markup Configuration (to allow raw HTML, which is useful in posts)
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Enables embedding HTML elements directly inside Markdown
+  [markup.highlight]
+    noClasses = true
+    style = "monokai" # Good default for code
+    lineNos = false
+
+# Main Menu Navigation (sidebar links)
+[[menu.main]]
+  name = "Writing"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+
+[[menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 3

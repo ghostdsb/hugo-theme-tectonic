@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.157.0">
+  
+  
+  <title>Rendering Retro Sprites on Monochromatic LCDs - Dibyanshu (ghostdsb)</title>
+  <meta name="description" content="Optimizing 2D sprite rendering routines for small SPI displays and embedded microcontrollers.">
+  <meta property="og:title" content="Rendering Retro Sprites on Monochromatic LCDs">
+  <meta property="og:description" content="Optimizing 2D sprite rendering routines for small SPI displays and embedded microcontrollers.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:1313/posts/rendering-retro-sprites/">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="canonical" href="http://localhost:1313/posts/rendering-retro-sprites/">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.min.bbf8a8984befb06d4b2a4eda1b2009c8e7f8f16dd04a10f6040715634a8569f7.css" integrity="sha256-u/iomEvvsG1LKk7aGyAJyOf48W3QShD2BAcVY0qFafc=">
+</head>
+<body>
+  <main>
+    
+    <header aria-hidden="true" class="no-print">
+      <nav role="navigation">
+        <ul>
+          
+          
+            
+            
+              
+              
+            
+            <li>
+              <a href="/" class="">
+                Writing
+              </a>
+            </li>
+          
+            
+            
+              
+              
+            
+            <li>
+              <a href="/about/" class="">
+                About
+              </a>
+            </li>
+          
+            
+            
+              
+              
+            
+            <li>
+              <a href="/projects/" class="">
+                Projects
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+      
+      
+      <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          
+          <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L18.36 16.95zm1.06-12.37c-.39-.39-1.02-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.38-.38.38-1.02 0-1.41zm-12.37 12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41z"/></svg>
+          
+          <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 22c5.3 0 9.7-4.3 9.7-9.7 0-4.1-2.5-7.6-6.1-9.1-.6-.2-1.3.3-1.1.9.9 2.5.4 5.3-1.4 7.2-1.9 1.9-4.7 2.3-7.2 1.4-.6-.2-1.2.4-.9 1.1 1.5 3.6 5 6.2 9 6.2z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    
+    <section>
+      
+<article class="post">
+  
+  <h2>Rendering Retro Sprites on Monochromatic LCDs</h2>
+  
+  
+  <div class="post-content">
+    <p>When building retro hand-held hardware using microcontrollers (such as the ESP32), we are constrained by SPI bandwidth and limited SRAM. Sending a full framebuffer (e.g., $320 \times 240$ at 16-bit color is $153.6\text{ KB}$) at 60 FPS requires over <strong>73.7 Mbps</strong> of continuous SPI throughput.</p>
+<p>This post walks through compiling a lean, high-efficiency sprite drawer in pure C that renders directly to local page buffers, bypassing standard double-buffering.</p>
+<hr>
+<h3 id="the-dirty-rectangle-strategy">The Dirty Rectangle Strategy</h3>
+<p>Instead of drawing the entire screen, we keep track of the bounding boxes of moving elements—our &ldquo;dirty rectangles&rdquo;. We only re-draw and send the pixels within these boundaries to the display controller via SPI.</p>
+<p>Here is a simplified structure representing a dirty rectangle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> y;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> width;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> height;
+</span></span><span style="display:flex;"><span>} DirtyRect_t;
+</span></span></code></pre></div><hr>
+<h3 id="sprite-blitting-with-transparency">Sprite Blitting with Transparency</h3>
+<p>To draw a sprite with standard chroma-key transparency (e.g., color <code>0x0000</code> is transparent), we scan through the sprite&rsquo;s pixel data. If the pixel is not transparent, we write it directly to our memory-mapped display area.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw_sprite</span>(<span style="color:#66d9ef">int16_t</span> x, <span style="color:#66d9ef">int16_t</span> y, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">uint16_t</span> <span style="color:#f92672">*</span>sprite, <span style="color:#66d9ef">uint8_t</span> w, <span style="color:#66d9ef">uint8_t</span> h) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">uint8_t</span> row <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; row <span style="color:#f92672">&lt;</span> h; row<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int16_t</span> screen_y <span style="color:#f92672">=</span> y <span style="color:#f92672">+</span> row;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (screen_y <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> screen_y <span style="color:#f92672">&gt;=</span> SCREEN_HEIGHT) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">uint8_t</span> col <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; col <span style="color:#f92672">&lt;</span> w; col<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int16_t</span> screen_x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> col;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (screen_x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> screen_x <span style="color:#f92672">&gt;=</span> SCREEN_WIDTH) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">uint16_t</span> color <span style="color:#f92672">=</span> sprite[row <span style="color:#f92672">*</span> w <span style="color:#f92672">+</span> col];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (color <span style="color:#f92672">!=</span> TRANSPARENT_COLOR) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Write pixel into the local line buffer
+</span></span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">write_pixel</span>(screen_x, screen_y, color);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="embedded-optimizations">Embedded Optimizations</h3>
+<ol>
+<li><strong>Fixed-Point Lookup Tables (LUTs)</strong>: Avoid floating-point arithmetic inside rendering loops. Convert degrees to 8-bit integers ($0\text{-}255$) and pre-calculate sine/cosine tables.</li>
+<li><strong>Direct Memory Access (DMA)</strong>: Configure the SPI host to use DMA channels. This lets the CPU compute the next frame&rsquo;s coordinates while the hardware is actively transmitting the current dirty pixel block.</li>
+<li><strong>Loop Unrolling</strong>: Unroll sprite copying loops where sprite sizes are fixed (e.g., $8 \times 8$ or $16 \times 16$) to eliminate branch checking overheads inside hot execution loops.</li>
+</ol>
+<p>By restricting updates to changing pixel blocks, we can comfortably achieve a solid <strong>60 FPS</strong> on SPI-driven retro systems with CPU cycles to spare!</p>
+
+  </div>
+  
+  
+  <span class="meta">
+    <time datetime="2026-05-21T10:00:00&#43;05:30">May 21, 2026</time>
+    
+      &middot; Filed under: <a href="/categories/gaming/">gaming</a>
+    
+  </span>
+</article>
+
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="social-links">
+        
+        
+        
+        
+        <a href="https://github.com/ghostdsb" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        
+        
+        <a href="mailto:hello@dibyanshu.in" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        
+      </div>
+      <p class="footer-text">&copy; 2026 Dibyanshu (ghostdsb).</p>
+    </div>
+  </footer>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GMRi4iYgflflvyRx0XeIzajQr9QyUXNH8OmVyC1GRgR-4JG3nSh1nyQs9Rb4COMf" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21hEPKMDmn9ibecEL1AkWDSVHZ3GD1Jv5GGUN7bKBdIA/qzg125zEggOPFrG1" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false,
+        macros: {
+          "\\R": "\\mathbb{R}",
+          "\\N": "\\mathbb{N}",
+          "\\Z": "\\mathbb{Z}"
+        }
+      });
+    });
+  </script>
+  <style>
+     
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 1.2rem 0;
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+    }
+     
+    .katex {
+      font-size: 1.1em;
+      color: inherit;
+    }
+  </style>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.4/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        fontFamily: '"JetBrains Mono", monospace',
+      });
+
+      function renderMermaid() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        
+        mermaid.initialize({
+          theme: isDark ? 'dark' : 'default',
+        });
+
+        const elements = document.querySelectorAll('code.language-mermaid');
+        elements.forEach((el) => {
+          const pre = el.parentElement;
+          if (pre && pre.tagName === 'PRE') {
+            pre.style.background = 'transparent';
+            pre.style.border = 'none';
+            pre.style.boxShadow = 'none';
+          }
+          
+          
+          if (el.getAttribute('data-mermaid-src')) {
+            el.innerHTML = el.getAttribute('data-mermaid-src');
+            el.removeAttribute('data-processed');
+          } else {
+            el.setAttribute('data-mermaid-src', el.textContent);
+          }
+        });
+        
+        mermaid.init(undefined, '.language-mermaid');
+      }
+
+      renderMermaid();
+
+      
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'data-theme') {
+            renderMermaid();
+          }
+        });
+      });
+      observer.observe(document.documentElement, { attributes: true });
+    });
+  </script>
+  <style>
+    code.language-mermaid {
+      background-color: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      display: block;
+      overflow-x: auto;
+    }
+    .mermaid {
+      display: flex;
+      justify-content: center;
+      background: transparent !important;
+    }
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 1rem 0;
+    }
+  </style>
+
+  
+  
+  <script src="/js/theme.min.1bb9216b260a62c67248425afcf9518d1b1625d9a7dd1a95e8d90fadb44cceb2.js" integrity="sha256-G7khayYKYsZySEJa/PlRjRsWJdmn3RqV6NkPrbRMzrI="></script>
+</body>
+</html>

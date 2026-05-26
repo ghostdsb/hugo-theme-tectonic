@@ -3,11 +3,10 @@
   <!-- Neo-Brutalist Category Filter Buttons -->
   <div class="category-filter">
     <button class="filter-btn active" data-category="all">All</button>
-    <button class="filter-btn" data-category="gaming">Gaming</button>
-    <button class="filter-btn" data-category="algorithm">Algorithm</button>
-    <button class="filter-btn" data-category="database">Database</button>
-    <button class="filter-btn" data-category="realtime">Realtime</button>
-    <button class="filter-btn" data-category="personal">Personal</button>
+    {{ $categories := .Site.Taxonomies.categories }}
+    {{ range $name, $taxonomy := $categories }}
+      <button class="filter-btn" data-category="{{ $name | lower }}">{{ $name | title }}</button>
+    {{ end }}
   </div>
   
   <ul>
@@ -21,7 +20,7 @@
       <li class="post-item" data-categories="{{ $categoriesString | lower }}">
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
-          {{ .Date.Format "Jan '02" }}
+          {{ .Date.Format "01/02/06" }}
         </time>
       </li>
     {{ end }}
