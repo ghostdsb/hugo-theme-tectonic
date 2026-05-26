@@ -104,6 +104,16 @@ To list this theme on the [official Hugo themes site](https://themes.gohugo.io/)
 2. **Featured Image:** The theme site requires a screenshot named `tn-featured.png` (600x400) in the `images/` directory.
 3. **Submission:** Follow the [official submission guide](https://gohugo.io/hugo-themes/submitting/).
 
+## GitHub Pages Deployment
+
+To deploy the `exampleSite` to GitHub Pages:
+
+1. **Enable GitHub Actions:** Go to your repository **Settings > Pages**.
+2. **Build and Deployment:** Under "Build and deployment > Source", select **GitHub Actions**.
+3. **Automatic Deployment:** The included `.github/workflows/gh-pages.yml` will automatically build and deploy the `exampleSite` whenever you push to the `main` branch.
+
+The workflow automatically detects your GitHub Pages URL and sets the `baseURL` during the build process, so no manual configuration of `hugo.toml` is required for deployment.
+
 ## Previews
 
 ### About Page (Dark)
