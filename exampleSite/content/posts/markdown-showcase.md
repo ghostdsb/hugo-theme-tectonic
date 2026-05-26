@@ -68,6 +68,14 @@ fn main() {
 | KaTeX | ✅ | Enabled in baseof.html |
 | Mermaid | ✅ | Enabled in baseof.html |
 
+## Images
+
+The theme automatically adds a Neo-Brutalist border to all images:
+
+![Example Image](/images/placeholder.svg)
+
+*Fig 1: A placeholder image demonstrating the theme's image styling.*
+
 ## Mathematics (KaTeX)
 
 Inline math: $E = mc^2$

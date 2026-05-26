@@ -11,6 +11,7 @@ themesDir = '../..'
   
   # Social links
   github = "https://github.com/ghostdsb"
+  github_repo = "https://github.com/ghostdsb/hugo-theme-tectonic"
   email = "hello@dibyanshu.in"
 
 # Taxonomy Configuration for Category Filters

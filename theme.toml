@@ -1,7 +1,10 @@
 name = "Tectonic"
-description = "A premium retro-brutalist mono-spaced Hugo theme designed for developer diaries, technical blogs, and portfolios."
-homepage = "https://github.com/ghostdsb/hugo-theme-tectonic"
 license = "MIT"
+licenselink = "https://github.com/ghostdsb/hugo-theme-tectonic/blob/main/LICENSE"
+description = "A premium neo-brutalist mono-spaced Hugo theme designed for technical writing and portfolios."
+homepage = "https://github.com/ghostdsb/hugo-theme-tectonic"
+tags = ["blog", "personal", "minimal", "tech", "dark-mode", "neo-brutalist", "mermaid", "katex"]
+features = ["Dark Mode", "Neo-Brutalist Design", "Mermaid.js", "KaTeX", "Dynamic Category Filter"]
 min_hugo_version = "0.120.0"
 
 [author]
