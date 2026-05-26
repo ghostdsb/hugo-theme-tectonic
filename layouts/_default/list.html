@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="posts">
+  <h2>{{ .Title }}</h2>
+  
+  <ul>
+    <!-- Render all pages belonging to this list (e.g. section, category, tag) -->
+    {{ range .Pages }}
+      {{ $categoriesString := "" }}
+      {{ with .Params.categories }}
+        {{ $categoriesString = delimit . " " }}
+      {{ end }}
+      <li class="post-item" data-categories="{{ $categoriesString | lower }}">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+          {{ .Date.Format "Jan '02" }}
+        </time>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

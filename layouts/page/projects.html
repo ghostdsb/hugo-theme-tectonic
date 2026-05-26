@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="post">
+  <h2>{{ .Title | default "Projects" }}</h2>
+  
+  <!-- Markdown side projects content is parsed and rendered here -->
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

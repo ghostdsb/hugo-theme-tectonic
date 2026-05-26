@@ -1,0 +1,9 @@
+name = "Tectonic"
+description = "A premium retro-brutalist mono-spaced Hugo theme designed for developer diaries, technical blogs, and portfolios."
+homepage = "https://github.com/ghostdsb/hugo-theme-tectonic"
+license = "MIT"
+min_hugo_version = "0.120.0"
+
+[author]
+  name = "Dibyanshu (ghostdsb)"
+  homepage = "https://github.com/ghostdsb"

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="post">
+  <h2>{{ .Title | default "About" }}</h2>
+  
+  <!-- Custom Neo-Brutalist 5-Column Contact/Social Table Grid -->
+  <table>
+    <tr>
+      {{ with .Site.Params.twitter }}<td><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Twitter</a></td>{{ end }}
+      {{ with .Site.Params.linkedin }}<td><a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></td>{{ end }}
+      {{ with .Site.Params.hn }}<td><a href="{{ . }}" target="_blank" rel="noopener noreferrer">HN</a></td>{{ end }}
+      {{ with .Site.Params.github }}<td><a href="{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a></td>{{ end }}
+      {{ with .Site.Params.email }}<td><a href="mailto:{{ . }}">Email</a></td>{{ end }}
+    </tr>
+  </table>
+
+  <!-- Biographical and Professional timeline content -->
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}
